@@ -5,9 +5,20 @@
   "name": "my-app",
   "scripts": {
     "start": "rss-scripts start",
-    "build": "rss-scripts build"
+    "build": "rss-scripts build",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+    "lint": "eslint ./src --fix"
   },
   "devDependencies": {
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-html": "^6.2.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.2",
     "rss-scripts": "^0.2.4"
   }
 }
