@@ -114,8 +114,8 @@ class Keyboard {
     if (targetButton === 'CapsLock') {
       this.capsSwitch = true;
     }
-    if (targetButton === 'ControlLeft' || targetButton === 'AltLeft') {
-      this.keysComb = true;
+    if (targetButton === 'ControlLeft') {
+      this.keysComb = false;
     }
   }
 
@@ -153,9 +153,12 @@ class Keyboard {
         this.shift = true;
         break;
       case 'AltLeft':
+        this.alt = true;
         if (this.keysComb) {
-          this.keysComb = false;
-          this.changeLanguage();
+          if (this.alt) {
+            this.alt = false;
+            this.changeLanguage();
+          }
         }
         break;
       case 'MetaLeft':
@@ -384,8 +387,10 @@ class Keyboard {
     ) {
       if (state === 'on') {
         this.isMouseDown = true;
+        this.shift = true;
       } else {
         this.isMouseDown = false;
+        this.shift = false;
       }
       if (this.isMouseDown) {
         if (event.target.getAttribute('data-code') === 'ShiftLeft') {
