@@ -12,6 +12,7 @@ class Keyboard {
     this.textValue = '';
     this.temp = '';
     this.alt = false;
+    this.keypress = '';
   }
 
   checkLanguage() {
@@ -98,6 +99,15 @@ class Keyboard {
     window.addEventListener('keyup', (event) => {
       event.preventDefault();
       this.keyUp(event);
+    });
+    document.body.addEventListener('mousedown', (event) => {
+      this.shiftInit(event, 'on');
+      this.clickOnKey(event);
+    });
+
+    document.body.addEventListener('mouseup', (event) => {
+      this.shiftInit(event, 'off');
+      this.removeClick();
     });
   }
 
@@ -423,13 +433,13 @@ class Keyboard {
     text.setSelectionRange(caretPos, caretPos);
   }
 
-  removeClick(event) {
-    const keyCode = event.target;
+  removeClick() {
+    const keyCode = this.keypress;
     const textarea = document.querySelector('.textarea');
     this.temp = 'Remove Class';
     textarea.focus();
-    if (keyCode.getAttribute('data-code')) {
-      keyCode.classList.remove('key-active');
+    if (document.querySelector(`[data-code ='${keyCode}']`)) {
+      document.querySelector(`[data-code ='${keyCode}']`).classList.remove('key-active');
     }
   }
 
@@ -438,6 +448,7 @@ class Keyboard {
     const textarea = document.querySelector('.textarea');
     textarea.focus();
     if (keyCode.getAttribute('data-code')) {
+      this.keypress = keyCode.getAttribute('data-code');
       keyCode.classList.add('key-active');
     }
     if (keyCode.classList.contains('key') === true) {
@@ -508,13 +519,3 @@ class Keyboard {
 
 const keyboard = new Keyboard();
 keyboard.generateKeyboard();
-
-document.body.addEventListener('mousedown', (event) => {
-  keyboard.shiftInit(event, 'on');
-  keyboard.clickOnKey(event);
-});
-
-document.body.addEventListener('mouseup', (event) => {
-  keyboard.shiftInit(event, 'off');
-  keyboard.removeClick(event);
-});
