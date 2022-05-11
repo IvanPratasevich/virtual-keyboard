@@ -93,11 +93,9 @@ class Keyboard {
       }
     }
     window.addEventListener('keydown', (event) => {
-      event.preventDefault();
       this.keyDown(event);
     });
     window.addEventListener('keyup', (event) => {
-      event.preventDefault();
       this.keyUp(event);
     });
     document.body.addEventListener('mousedown', (event) => {
@@ -114,7 +112,10 @@ class Keyboard {
   keyUp(event) {
     const targetButton = event.code;
     const keyCode = document.querySelector(`[data-code = '${event.code}']`);
-    keyCode.classList.remove('key-active');
+    if (keyCode !== null) {
+      keyCode.classList.remove('key-active');
+      event.preventDefault();
+    }
     if (targetButton === 'ShiftLeft' || targetButton === 'ShiftRight') {
       if (this.shift === true) {
         this.changeKeyboardBeforeShift();
@@ -132,8 +133,10 @@ class Keyboard {
   keyDown(event) {
     const targetButton = event.code;
     const keyCode = document.querySelector(`[data-code = '${event.code}']`);
-    keyCode.classList.add('key-active');
-    event.preventDefault();
+    if (keyCode !== null) {
+      keyCode.classList.add('key-active');
+      event.preventDefault();
+    }
     switch (targetButton) {
       case 'CapsLock':
         if (this.capsLock === 'off') {
@@ -191,7 +194,9 @@ class Keyboard {
         this.tabKey();
         break;
       default:
-        this.writeInTextarea(keyCode.innerText);
+        if (keyCode !== null) {
+          this.writeInTextarea(keyCode.innerText);
+        }
         break;
     }
   }
