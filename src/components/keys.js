@@ -605,6 +605,7 @@ const keys = [
         ru: '▲',
         en: '▲',
       },
+      class: 'specialKeysArrow',
     },
     {
       code: 'ShiftRight',
@@ -690,6 +691,7 @@ const keys = [
         ru: '◄',
         en: '◄',
       },
+      class: 'specialKeysArrow',
     },
     {
       code: 'ArrowDown',
@@ -701,6 +703,7 @@ const keys = [
         ru: '▼',
         en: '▼',
       },
+      class: 'specialKeysArrow',
     },
     {
       code: 'ArrowRight',
@@ -712,6 +715,7 @@ const keys = [
         ru: '►',
         en: '►',
       },
+      class: 'specialKeysArrow',
     },
     {
       code: 'ControlRight',
@@ -723,6 +727,7 @@ const keys = [
         ru: 'none',
         en: 'none',
       },
+      class: 'specialKeysRightCtrl',
     },
   ],
 ];

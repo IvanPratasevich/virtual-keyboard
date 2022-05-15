@@ -446,6 +446,9 @@ class Keyboard {
     if (document.querySelector(`[data-code ='${keyCode}']`)) {
       document.querySelector(`[data-code ='${keyCode}']`).classList.remove('key-active');
     }
+    if (this.capsLock === 'on') {
+      document.querySelector('.capslock').classList.remove('key-active');
+    }
   }
 
   clickOnKey(event) {
@@ -479,7 +482,6 @@ class Keyboard {
             this.lowercase();
             this.capsLock = 'off';
             document.querySelector('.capslock').classList.remove('caps-active');
-            document.querySelector('.capslock').classList.remove('key-active');
           }
           break;
         case 'ControlLeft':
