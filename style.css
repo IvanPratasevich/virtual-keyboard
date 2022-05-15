@@ -38,12 +38,13 @@ body {
 .keyboard {
   width: 673px;
   padding: 11px;
-  background-color: #24333e;
+  background-color: #356a8f;
+  border-radius: 6px;
 }
 .keyboard__container {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 10px;
 }
 .row {
   display: flex;
@@ -53,9 +54,12 @@ body {
 .key {
   display: flex;
   justify-content: center;
+  position: relative;
+  top: 0;
   align-items: center;
   width: 40px;
   height: 40px;
+  border-radius: 4px;
   background-blend-mode: soft-light;
   background: #f4f4f4;
   font-family: 'Roboto Mono';
@@ -66,9 +70,14 @@ body {
   color: #104096;
   cursor: pointer;
   user-select: none;
-  transition: 0.2s;
+  backface-visibility: hidden;
+  transition: all 0.2s ease;
+  box-shadow: 0px 4px rgba(0, 0, 0, 0.2);
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 .key:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 0px 4px #006066;
   filter: brightness(80%);
 }
 .backspace {
@@ -77,6 +86,7 @@ body {
   background: #356a8f;
   background-blend-mode: multiply;
   color: #e85f56;
+  outline: 1px solid #f4f4f4;
 }
 .tab {
   width: 50px;
@@ -84,17 +94,20 @@ body {
   background: #356a8f;
   background-blend-mode: multiply;
   color: #e85f56;
+  outline: 1px solid #f4f4f4;
 }
 .capslock {
   width: 75px;
   height: 40px;
   background-color: #ff6c4b;
   transition: 0.2s;
+  outline: 1px solid #f4f4f4;
 }
 .enter {
   width: 103px;
   height: 40px;
   background-color: #ff6c4b;
+  outline: 1px solid #f4f4f4;
 }
 .shift {
   width: 84px;
@@ -103,11 +116,13 @@ body {
   background-blend-mode: multiply;
   color: #e85f56;
   transition: 0.2s;
+  outline: 1px solid #f4f4f4;
 }
 .space {
-  width: 283px;
+  width: 285px;
   height: 40px;
   background-color: #e85f56;
+  outline: 1px solid #f4f4f4;
 }
 .specialKeys {
   color: #e85f56;
@@ -115,6 +130,7 @@ body {
   background-blend-mode: multiply;
   width: 50px;
   height: 40px;
+  outline: 1px solid #f4f4f4;
 }
 .alt-right {
   color: #e85f56;
@@ -122,14 +138,24 @@ body {
   background-blend-mode: multiply;
   width: 40px;
   height: 40px;
+  outline: 1px solid #f4f4f4;
 }
 .caps-active {
+  background-color: #007fff !important;
+  color: white !important;
+}
+.caps-active:active {
   background-color: #007fff;
-  color: white;
+  color: white !important;
+  top: 4px !important;
+  box-shadow: 0px 0px #d3545d !important;
+  filter: brightness(100%) !important;
 }
 .key-active {
   background-color: #007fff;
   color: white !important;
+  top: 4px !important;
+  box-shadow: 0px 0px #d3545d !important;
   filter: brightness(100%) !important;
 }
 .change-lang {
@@ -145,4 +171,21 @@ body {
 }
 .del {
   color: #e85f56;
+  outline: 1px solid #f4f4f4;
+}
+.specialKeysRightCtrl {
+  color: #e85f56;
+  background: #356a8f;
+  background-blend-mode: multiply;
+  width: 40px;
+  height: 40px;
+  outline: 1px solid #f4f4f4;
+}
+.specialKeysArrow {
+  color: #e85f56;
+  background: #356a8f;
+  background-blend-mode: multiply;
+  width: 40px;
+  height: 40px;
+  outline: 1px solid #f4f4f4;
 }
